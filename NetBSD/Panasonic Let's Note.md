@@ -1,0 +1,12 @@
+* [Panasonic Let'snote LITE CF-R4へのFreeBSDの導入](http://www.imasy.or.jp/~ume/presentation/CBUG-20050625/cf-r4.pdf)( PDF )
+* [cc-env - laptop 用の kernel 再構築](http://www.gfd-dennou.org/arch/uwabami/cc-env/old/kernel-deutzia.html)
+* [すみっこのメモ - CF-R4にUbuntu(edgy)をインストールしたときのメモ](http://www.sabamiso.net/yoggy/hiki/?CF-R4%A4%CBUbuntu(edgy)%A4%F2%A5%A4%A5%F3%A5%B9%A5%C8%A1%BC%A5%EB%A4%B7%A4%BF%A4%C8%A4%AD%A4%CE%A5%E1%A5%E2)
+* [Let's note R4 への Linux インストールメモ](http://howm.sourceforge.jp/cgi-bin/hiki/hiki.cgi?LetsNote)
+* [Momma's Wiki: FreeBSD/On Let's Note CF-T2 - Let's Noteの円形タッチパッドはSynaptics社製。ports...](http://www.eml.ele.cst.nihon-u.ac.jp/~momma/wiki/wiki.cgi/FreeBSD/On%20Let's%20Note%20CF-T2.html)
+* [yoosee.wiki - Debian sarge on Let's Note CF-Y4](http://yoosee.net/wiki/?Debian/install/CF-Y4)
+* [Let's Note Y2](http://kmuto.jp/open.cgi?Y2&l=jp)
+* [NetBSD 絹の日記 Let's note CF-R1 で 4.0](http://www.ki.nu/~makoto/diary/2008/02/03/1.html)
+* [Netbooting/i386](http://www.ki.nu/software/netboot/i386.html)
+* [Panasonic CF-R1 /netbsd-network-boot](http://www.ki.nu/hardware/cf-r1/netbsd-network-boot.html)
+* [NetBSD 絹の日記](http://www.ki.nu/~makoto/diary/2007/11/17/#200711171)
+* [[netbsd,09406] Re: Let's note CF-R5L|http://www.re.soum.co.jp/~fukaumi/ml/netbsd/200703/msg00019.html]

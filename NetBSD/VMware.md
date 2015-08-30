@@ -1,0 +1,7 @@
+* [NetBSD Documentation: Running VMWare on NetBSD](http://www.netbsd.org/docs/vmware.html)
+* [本当に無償で使える「VMware Player」](http://yamashita.dyndns.org/blog/343)
+* [VMware PlayerでNetBSDのインストール](http://blogs.dion.ne.jp/kazu_n/archives/2215009.html)
+* [KazuのBlog:VMware PlayerでNetBSDのインストール](http://blogs.dion.ne.jp/kazu_n/archives/2215009.html)
+* [VMware3.0 の Network の設定方法](http://www.ukkii.com/vmware/VMnet_Tips/VMnet_Tips.html)
+* [いつきログ - VMwareおもしれぇぇーーーーー！！！](http://blog.proj.jp/ituki/20051105.html)
+* [ひらくの工房Wiki - VMwareの設定メモ](http://www.hinet.mydns.jp/~hiraku/hiki/VMwareConfig.html)

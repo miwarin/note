@@ -1,0 +1,5 @@
+* [BSD Make - NetBSD Wiki](http://wiki.netbsd.se/BSD_Make)
+* [Basic Unix programming - Using BSD Make - NetBSD Wiki](http://wiki.netbsd.se/Basic_Unix_programming#Using_BSD_Make)
+* [make - NetBSD Manual Pages](http://netbsd.gw.com/cgi-bin/man-cgi?make++NetBSD-current)
+* [On-line Manual of "style.Makefile"](http://www.jp.freebsd.org/cgi/mroff.cgi?sect=5&cmd=&lc=1&subdir=man&dir=jpman-5.4.0%2Fman&man=style.Makefile)
+* [On-line Manual of "make"](http://www.jp.freebsd.org/cgi/mroff.cgi?sect=1&cmd=&lc=1&subdir=man&dir=jpman-5.4.0%2Fman&subdir=man&man=make)
