@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 static int sort[] = { 2, 1, 3 };
-int n = sizeof(sort) / sizeof(sort[0]);
+static int n = sizeof(sort) / sizeof(sort[0]);
 
 void BubbleSort( void )
 {
