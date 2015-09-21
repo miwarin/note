@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 3
-static int sort[N] = { 3, 1, 2 };
+static int sort[] = { 3, 1, 2 };
+int n = sizeof(sort) / sizeof(sort[0]);
 
 void QuickSort(int bottom, int top, int* data)
 {
@@ -38,26 +38,26 @@ void QuickSort(int bottom, int top, int* data)
 		QuickSort(upper + 1, top, data);
 	}
 }
-
-int main(int ac, char** av)
-{
-	int i;
-	//srand( ( unsigned int )time( NULL ) );
-
-	//printf("ソート準備\n");
-	//for( i = 0; i < N; i++ )
-	//{
-	//  sort[ i ] = rand();
-	//  printf("%d\n", sort[ i ]);
-	//}
-	printf("\nソート開始\n");
-	QuickSort(0, N - 1, sort);
-
-
-	printf("\nソート終了\n");
-	for (i = 0; i < N; i++)
-	{
-		printf("%d\n", sort[i]);
-	}
-	return 0;
-}
+//
+//int main(int ac, char** av)
+//{
+//	int i;
+//	//srand( ( unsigned int )time( NULL ) );
+//
+//	//printf("ソート準備\n");
+//	//for( i = 0; i < n; i++ )
+//	//{
+//	//  sort[ i ] = rand();
+//	//  printf("%d\n", sort[ i ]);
+//	//}
+//	printf("\nソート開始\n");
+//	QuickSort(0, n - 1, sort);
+//
+//
+//	printf("\nソート終了\n");
+//	for (i = 0; i < n; i++)
+//	{
+//		printf("%d\n", sort[i]);
+//	}
+//	return 0;
+//}
