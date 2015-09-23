@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct tagLitNode
+typedef struct tagListNode
 {
 	struct tagListNode* prev;
 	struct tagListNode* next;
