@@ -48,6 +48,13 @@
             read only = No
             browseable = No
 
+    [public]
+            path = /usr
+            read only = No
+            guest only = Yes
+            guest ok = Yes
+
+
 ユーザー追加
 
     % sudo pdbedit -a rin
