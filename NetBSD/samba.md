@@ -38,7 +38,7 @@
      :
     [global]
             dos charset = CP932
-            display charset = UTF-8
+            unix charset = UTF8
             server string = Samba %v (%h)
             hosts allow = 192.168.0., 127.
     
