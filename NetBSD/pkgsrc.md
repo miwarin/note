@@ -1,11 +1,11 @@
-#pkgsrc を使う
+# pkgsrc を使う
 
 *  [Chapter 2 Where to get pkgsrc and how to keep it up-to-date](http://www.netbsd.org/docs/pkgsrc/getting.html)
 *  [NetBSD パッケージシステムに関するドキュメンテーション](http://www.jp.netbsd.org/ja/docs/pkgsrc/index.html)
 *  [pkgsrcめも - isihara＠つなぐねっとのぺーじ](http://www.tunagu.gr.jp/cgi-bin/fswiki/wiki.cgi/isihara?page=pkgsrc%A4%E1%A4%E2) オプションとかたくさん説明がある
 *  [NetBSD wiki - pkgsrc](http://wiki.netbsd.org/pkgsrc/)
 
-##FTP
+## FTP
 
 古い /usr/pkgsrc は全て削除しておくこと
 
@@ -15,7 +15,7 @@ ftp://ftp.netbsd.org/pub/pkgsrc/ から取得
     wget ftp://ftp.netbsd.org/pub/pkgsrc/pkgsrc-2013Q1/pkgsrc-2013Q1.tar.gz
     tar xzf pkgsrc-2013Q1.tar.gz
 
-##CVS
+## CVS
 
 csh系
 
@@ -37,7 +37,7 @@ csh系
     cd /usr/pkgsrc
     cvs update -dP
 
-##different version xxxx already installed
+## different version xxxx already installed
 
 なにかのパッケージを make install している途中で
 
@@ -58,7 +58,7 @@ csh系
 
 > @miwarin pkg_admin rebuild=YES pkg1 pkg2... したのち、pkgtools/pkg_rolling-replace 入れて、pkg_rolling-replace すれば放置可能。
 
-#バイナリパッケージをインストールする
+# バイナリパッケージをインストールする
 
 [Chapter&#160;4.&#160;Using pkgsrc - 4.1.2. Installing binary packages](http://www.netbsd.org/docs/pkgsrc/using.html#installing-binary-packages)
 
@@ -81,7 +81,7 @@ http://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1.2/All/
     pkg_add gimp-2.8.10
     pkg_add mng-2.0.2
 
-#ruby 1.9 未対応
+# ruby 1.9 未対応
 
 (2012-08-16)
 
@@ -114,25 +114,23 @@ http://ftp.netbsd.org/pub/pkgsrc/packages/NetBSD/i386/6.1.2/All/
     www/ap-ruby/Makefile:RUBY_VERSION_SUPPORTED= 18
     x11/kdebindings-ruby/Makefile:RUBY_VERSION_SUPPORTED= 18
 
+# パッケージを作る
 
-
-#パッケージを作る
-
-##参考
+## 参考
 
 *  [Part II.The pkgsrc developer's guide](http://www.netbsd.org/docs/pkgsrc/developers-guide.html) 本家
 *  [The pkgsrc guide](http://www.jp.netbsd.org/ja/docs/pkgsrc/index.html) なぜか日本語文書がある
 
 あと mail/postfix とか www/apache22 とか devel/ruby* とか先人たちによるパッケージも眺める。
 
-##はじめに
+## はじめに
 
 pkgsrc でパッケージを作るには 2 通りの方法がある。
 
 *  url2pkg を使う: 1 から作る場合 ref. [Chapter 10. Creating a new pkgsrc package from scratch](http://www.netbsd.org/docs/pkgsrc/creating.html)
 *  port2pkg を使う: FreeBSD ports に存在する場合 ref. [port2pkgを試してみる - isihara＠つなぐねっとのぺーじ](http://www.tunagu.gr.jp/cgi-bin/fswiki/wiki.cgi/isihara?page=port2pkg%A4%F2%BB%EE%A4%B7%A4%C6%A4%DF%A4%EB) 本家に文書が無いのか
 
-##quickml パッケージを作ってみる
+## quickml パッケージを作ってみる
 
 url2pkg を使ってみた
 
@@ -251,7 +249,7 @@ options.mk
     DEPENDS+=      gnuplot>=3.7:../../graphics/gnuplot
     .endif
 
-#パッケージを提出する
+# パッケージを提出する
 
 *  [Chapter&#160;21.&#160;提出およびコミット](http://www.jp.netbsd.org/ja/docs/pkgsrc/submit.html)
 
@@ -260,19 +258,19 @@ tar gz して uuencode し、[send-pr](http://www.netbsd.org/support/send-pr.htm
     % tar czf quickml.tgz quickml
     % uuencode quickml.tgz < quickml.tgz > quickml.tgz.uuencode
 
-#デバッグ的な何か
+# デバッグ的な何か
 
-##変数の値を確認
+## 変数の値を確認
 
     % make -V WRKSRC
     ${WRKDIR}/${DISTNAME}
 
-#pkgsrc クロスコンパイル
+# pkgsrc クロスコンパイル
 
 *  [Obache Watching:pkgsrc の cross-build](http://www.lins.jp/~obata/diary/200803242.html)
 *  [pkgsrc/doc/HOWTO-crosscompile - view - 1.2](http://cvsweb.netbsd.org/bsdweb.cgi/pkgsrc/doc/HOWTO-crosscompile?rev=HEAD&content-type=text/x-cvsweb-markup)
 
-#バルクビルド
+# バルクビルド
 
 wiki のとおりにやればよい
 
