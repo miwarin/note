@@ -284,3 +284,58 @@ wiki のとおりにやればよい
     % pkg_rolling-replace -rsuvX
 
 * [how to upgrade packages](https://wiki.netbsd.org/pkgsrc/how_to_upgrade_packages/ "how to upgrade packages")
+
+# pkgsrc-wip を使う
+
+[The pkgsrc-wip project](https://pkgsrc.org/wip/ "The pkgsrc-wip project")
+
+## ユーザーとして使う
+
+wip/<パッケージ> は相対ディレクトリとして mk を include するので pkgsrc/wip にあることが前提。
+
+    % cd /usr/pkgsrc/
+    % git clone git://wip.pkgsrc.org/pkgsrc-wip.git wip
+
+あとは普通に
+
+    % cd wip/<パッケージ>
+    % make install 
+
+## 開発者として使う
+
+ようするに git でコミットできるようにする。
+
+git 利用するのが一般ユーザーであり、root ではないことを前提とする。wip 自体は一般ユーザーの ~/wip といった場所に clone する
+
+* git で操作するときは一般ユーザーで ~/wip 以下で作業する
+* パッケージをビルドするときは /usr/pkgsrc/wip/<パッケージ> で make する
+
+という使い方とする。pkgsrc を一般ユーザーの ~/ 以下に置いて make すればいいんだろうけど習慣として /usr/pkgsrc にしとく。
+
+### コミット権を申請する
+
+git で wip にアクセスできるようにコミット権を貰う。手順は [committer access](https://pkgsrc.org/wip/users/ "committer access") にあるとおりに作業する。鍵を生成し、公開鍵を Thomas Klausner へ送付する。
+
+そのとき「○○というパッケージを wip に追加したいんだけど」等と書いておくと「いいよ！バシバシやってくれよ！」といったように気軽にコミット権をくれます。
+
+### 作業
+
+git の操作については上記ページに書いてあるとおりにやる。
+
+wip をビルドするときに union mount しておくと便利。
+
+    % cd ~/
+    % git clone username@wip.pkgsrc.org:/pkgsrc-wip.git wip
+    % sudo mkdir /usr/pkgsrc/wip
+    % sudo mount_union /home/rin/wip /usr/pkgsrc/wip
+
+ビルドするときはこう
+
+    % cd /usr/pkgsrc/wip/パッケージ
+    % make install
+
+パッケージを git 操作するときは ~/wip で作業する。
+
+    % cd ~/wip
+    % git commit
+    % git push
