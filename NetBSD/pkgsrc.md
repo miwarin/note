@@ -339,3 +339,16 @@ wip をビルドするときに union mount しておくと便利。
     % cd ~/wip
     % git commit
     % git push
+
+# よく使うオプション
+
+/etc/mk.conf はだいたいこんな
+
+    ACCEPTABLE_LICENSES=postfix-license
+    ACCEPTABLE_LICENSES=vim-license
+    X11_TYPE=modular           # X11を使う場合
+    PKG_DEFAULT_OPTIONS= -x11  # X11を使わない場合
+    PKG_OPTIONS.ImageMagick=-x11 -jasper
+    PKG_OPTIONS.scmgit=-scmgit-gui
+    ALLOW_VULNERABLE_PACKAGES=1
+    PKG_OPTIONS.emacs=-dbus -gtk -svg -x11 -xft2 -xaw -motif -nextstep
