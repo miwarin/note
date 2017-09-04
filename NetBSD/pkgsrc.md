@@ -353,6 +353,16 @@ wip をビルドするときに union mount しておくと便利。
     ALLOW_VULNERABLE_PACKAGES=1
     PKG_OPTIONS.emacs=-dbus -gtk -svg -x11 -xft2 -xaw -motif -nextstep
 
+# SSL ルート証明書をインストールする
+
+    % cd /usr/pkgsrc/security/mozilla-rootcerts
+    % make install clean clean-depends
+    % mozilla-rootcerts install
+
+ここに入る
+
+    /etc/ssl/certs/ca-certificates.crt
+
 # git で SSL エラーになる場合
 
 ありがちなエラー
