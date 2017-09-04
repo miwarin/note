@@ -352,3 +352,22 @@ wip をビルドするときに union mount しておくと便利。
     PKG_OPTIONS.scmgit=-scmgit-gui
     ALLOW_VULNERABLE_PACKAGES=1
     PKG_OPTIONS.emacs=-dbus -gtk -svg -x11 -xft2 -xaw -motif -nextstep
+
+# git で SSL エラーになる場合
+
+ありがちなエラー
+
+    % git clone https://github.com/motemen/go-cli 
+    Cloning into 'go-cli'...
+    fatal: unable to access 'https://github.com/motemen/go-cli/': SSL certificate problem: unable to get local issuer certificate
+
+暫定回避策
+
+    % git config --global http.sslVerify false
+
+ちゃんと対策する場合は ~/.gitconfig に書く
+
+    [http]
+    sslCAinfo = /etc/ssl/certs/ca-certificates.crt
+
+
