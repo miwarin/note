@@ -37,7 +37,7 @@
             read only = No
             browseable = No
 
-    [public]
+    [usr]
             path = /usr
             read only = No
             guest only = Yes
