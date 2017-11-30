@@ -352,6 +352,8 @@ wip をビルドするときに union mount しておくと便利。
     PKG_OPTIONS.scmgit=-scmgit-gui
     ALLOW_VULNERABLE_PACKAGES=1
     PKG_OPTIONS.emacs=-dbus -gtk -svg -x11 -xft2 -xaw -motif -nextstep
+    ACCEPTABLE_LICENSES+= gnu-agpl-v3
+
 
 # SSL ルート証明書をインストールする
 
