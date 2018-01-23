@@ -265,6 +265,24 @@ tar gz して uuencode し、[send-pr](http://www.netbsd.org/support/send-pr.htm
     % make -V WRKSRC
     ${WRKDIR}/${DISTNAME}
 
+## すべての変数の値を確認
+
+    % make show-all
+
+こういうもの(mk/misc/show.mk)
+
+```
+# show-all:
+#	Prints a list of (hopefully) all pkgsrc variables that are visible
+#	to the user or the package developer. It is intended to give
+#	interested parties a better insight into the inner workings of
+#	pkgsrc. Each variable name is prefixed with a "category":
+#
+#		* "usr" for user-settable variables,
+#		* "pkg" for package-settable variables,
+#		* "sys" for system-defined variables.
+```
+
 # pkgsrc クロスコンパイル
 
 *  [Obache Watching:pkgsrc の cross-build](http://www.lins.jp/~obata/diary/200803242.html)
@@ -381,5 +399,4 @@ wip をビルドするときに union mount しておくと便利。
 
     [http]
     sslCAinfo = /etc/ssl/certs/ca-certificates.crt
-
 
