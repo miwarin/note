@@ -364,8 +364,7 @@ wip をビルドするときに union mount しておくと便利。
 
     ACCEPTABLE_LICENSES=postfix-license
     ACCEPTABLE_LICENSES=vim-license
-    X11_TYPE=modular           # X11を使う場合
-    PKG_DEFAULT_OPTIONS= -x11  # X11を使わない場合
+    X11_TYPE=modular           # システムのX11(/usr/X11R6, /usr/openwin, ...)を使わない場合。/usr/pkgsrc/x11/modular-xorg-server が使われるようになる。らしい
     PKG_OPTIONS.ImageMagick=-x11 -jasper
     PKG_OPTIONS.scmgit=-scmgit-gui
     ALLOW_VULNERABLE_PACKAGES=1
