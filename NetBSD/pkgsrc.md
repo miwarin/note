@@ -290,11 +290,20 @@ tar gz して uuencode し、[send-pr](http://www.netbsd.org/support/send-pr.htm
 
 # バルクビルド
 
-wiki のとおりにやればよい
+この手順どおり
 
 *  [Chapter 7. Creating binary packages for everything in pkgsrc (bulk builds)](http://www.netbsd.org/docs/pkgsrc/bulk.html)
-*  [Chapter&#160;7.&#160;pkgsrc のバイナリーパッケージを全部作成する (バルクビルド)](http://www.jp.netbsd.org/ja/docs/pkgsrc/bulk.html)
-*  [pbulk](http://wiki.netbsd.org/tutorials/pkgsrc/pbulk/)
+
+mk/pbulk/pbulk.sh を使うとよい。 /usr/pbulk/etc/pbulk.list は用途が分からん。
+
+    (cd /usr && ftp -o - http://ftp.NetBSD.org/pub/pkgsrc/current/pkgsrc.tar.gz | tar -zxf-)
+    cd /usr/pkgsrc/mk/pbulk/
+    sh pbulk.sh -n
+
+ビルドする
+
+    /usr/pbulk/bin/bulkbuild
+
 
 # パッケージを全部アップグレードする
 
