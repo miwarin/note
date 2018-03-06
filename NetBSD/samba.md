@@ -37,16 +37,22 @@
             read only = No
             browseable = No
 
+
+ユーザー追加。sambaをインストールしたホスト(NetBSD)にユーザー rin が居て且つ /home/rin にはユーザー rin としてアクセスしたい場合。
+
+    % sudo pdbedit -a rin
+
+共有フォルダ( usr )にアクセスさせたい場合。samba においてゲストアカウントはデフォルトで nobody なので、追加しておく。sambaホスト(NetBSD)にユーザー nodoby が居る必要がある(つまり /etc/passowd に nodoby が居る必要がある)。pdedit でも nobody を追加しておく。パスワードはカラッポでかまわんでしょ(家庭内で使ってるのでテキトー)
+
     [usr]
             path = /usr
             read only = No
             guest only = Yes
             guest ok = Yes
 
+ユーザー追加。
 
-ユーザー追加
-
-    % sudo pdbedit -a rin
+    % sudo pdbedit -a nobody
 
 開始
 
