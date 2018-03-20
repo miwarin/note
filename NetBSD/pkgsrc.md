@@ -308,7 +308,7 @@ mk/pbulk/pbulk.sh を使うとよい。 /usr/pbulk/etc/pbulk.list は用途が�
 # パッケージを全部アップグレードする
 
     % cd /usr/pkgsrc
-    % pkg_rolling-replace -rsuvX
+    % pkg_rolling-replace -rsuv
 
 * [how to upgrade packages](https://wiki.netbsd.org/pkgsrc/how_to_upgrade_packages/ "how to upgrade packages")
 
