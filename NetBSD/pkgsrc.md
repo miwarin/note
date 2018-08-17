@@ -292,13 +292,119 @@ tar gz して uuencode し、[send-pr](http://www.netbsd.org/support/send-pr.htm
 
 この手順どおり
 
-*  [Chapter 7. Creating binary packages for everything in pkgsrc (bulk builds)](http://www.netbsd.org/docs/pkgsrc/bulk.html)
+https://wiki.netbsd.org/tutorials/pkgsrc/pbulk/
 
-mk/pbulk/pbulk.sh を使うとよい。
+chroot 環境を作る。chroot 環境で作業しないと /var/pkg/db 等がぶっ壊されて分けわからなくなる。
 
-    (cd /usr && ftp -o - http://ftp.NetBSD.org/pub/pkgsrc/current/pkgsrc.tar.gz | tar -zxf-)
-    cd /usr/pkgsrc/mk/pbulk/
-    sh pbulk.sh -n
+mksandbox で作る。インストールする。
+
+    % cd /usr/pkgsrc/pkgtools/mksandbox/
+    % make install clean clean-depends
+
+実行
+
+    % mksandbox --without-x /home/bulk
+    WARNING: LOCALPATCHES directory does not exist - ignoring
+    Copying the kernel
+    Checking package hierarchy in /usr/pkg and package database in /var/db/pkg exist
+    Make and populate /home/bulk/dev
+    Make and populate /home/bulk/etc
+    Make empty dirs upon which to mount the null mounts
+    Making /tmp in /home/bulk
+    Making /var/games in /home/bulk
+    Making /var/run in /home/bulk
+    Making /var/log in /home/bulk
+    Making /var/spool/lock in /home/bulk
+    Making /var/run/utmp in /home/bulk
+    Making /var/run/utmpx in /home/bulk
+    Making /var/log/wtmp in /home/bulk
+    Making /var/log/wtmpx in /home/bulk
+    Making /var/log/lastlog in /home/bulk
+    Making /var/log/lastlogx in /home/bulk
+    Mount /usr/src from /home/bulk
+    Mount /usr/pkgsrc from /home/bulk
+    Mounting /usr/pkgsrc/packages and /usr/pkgsrc/distfiles from /home/bulk
+    Sandbox creation is now complete
+
+mount はこんな感じ。
+
+    % mount
+    /dev/wd0a on / type ffs (local)
+    /dev/wd0f on /var type ffs (local)
+    /dev/wd0e on /usr type ffs (local)
+    /dev/wd0g on /home type ffs (local)
+    kernfs on /kern type kernfs (local)
+    ptyfs on /dev/pts type ptyfs (local)
+    procfs on /proc type procfs (local)
+    tmpfs on /var/shm type tmpfs (local)
+    /bin on /home/bulk/bin type null (read-only, local)
+    /sbin on /home/bulk/sbin type null (read-only, local)
+    /lib on /home/bulk/lib type null (read-only, local)
+    /libexec on /home/bulk/libexec type null (read-only, local)
+    /usr/bin on /home/bulk/usr/bin type null (read-only, local)
+    /usr/games on /home/bulk/usr/games type null (read-only, local)
+    /usr/include on /home/bulk/usr/include type null (read-only, local)
+    /usr/lib on /home/bulk/usr/lib type null (read-only, local)
+    /usr/libdata on /home/bulk/usr/libdata type null (read-only, local)
+    /usr/libexec on /home/bulk/usr/libexec type null (read-only, local)
+    /usr/share on /home/bulk/usr/share type null (read-only, local)
+    /usr/sbin on /home/bulk/usr/sbin type null (read-only, local)
+    /var/mail on /home/bulk/var/mail type null (read-only, local)
+    /usr/src on /home/bulk/usr/src type null (read-only, local)
+    /usr/pkgsrc on /home/bulk/usr/pkgsrc type null (local)
+    /usr/pkgsrc/packages on /home/bulk/usr/pkgsrc/packages type null (local)
+    /usr/pkgsrc/distfiles on /home/bulk/usr/pkgsrc/distfiles type null (local)
+
+pbulk 環境を作る
+
+    % /home/bulk/sandbox mount
+
+    % /home/bulk/sandbox
+
+mount はこんな感じ。
+
+    % mount
+    /bin on /bin type null (read-only, local)
+    /sbin on /sbin type null (read-only, local)
+    /lib on /lib type null (read-only, local)
+    /libexec on /libexec type null (read-only, local)
+    /usr/bin on /usr/bin type null (read-only, local)
+    /usr/games on /usr/games type null (read-only, local)
+    /usr/include on /usr/include type null (read-only, local)
+    /usr/lib on /usr/lib type null (read-only, local)
+    /usr/libdata on /usr/libdata type null (read-only, local)
+    /usr/libexec on /usr/libexec type null (read-only, local)
+    /usr/share on /usr/share type null (read-only, local)
+    /usr/sbin on /usr/sbin type null (read-only, local)
+    /var/mail on /var/mail type null (read-only, local)
+    /usr/src on /usr/src type null (read-only, local)
+    /usr/pkgsrc on /usr/pkgsrc type null (local)
+    /usr/pkgsrc/packages on /usr/pkgsrc/packages type null (local)
+    /usr/pkgsrc/distfiles on /usr/pkgsrc/distfiles type null (local)
+    /dev/wd0g on / type ffs (local)
+
+シェルは補完が効かないので on にする。
+
+    % set -o tabcomplete emacs
+
+mk.conf.frag を作る。
+
+    % cd /
+    % vi mk.conf.frag
+
+内容
+
+    SKIP_LICENSE_CHECK=             yes
+    ALLOW_VULNERABLE_PACKAGES=      yes
+    PKG_DEVELOPER?=         yes
+
+pbulk.sh でえいやっと。
+
+    % sh /usr/pkgsrc/mk/pbulk/pbulk.sh -n -l -c mk.conf.frag
+
+pbulk.sh で limited_list を指定し忘れた場合は /usr/pbulk/etc/pbulk.conf を編集する。
+
+    limited_list=/usr/pbulk/etc/pbulk.list
 
 limited_list は <カテゴリ>/<パッケージ名> を書く。/usr/pkgsrc からの相対 PATH です。wip も書ける。
 
@@ -306,19 +412,21 @@ limited_list は <カテゴリ>/<パッケージ名> を書く。/usr/pkgsrc か
     lang/ruby
     wip/mackerel-agent
 
-pbulk.sh で limited_list を指定し忘れた場合は /usr/pbulk/etc/pbulk.conf を編集する。
+pbulk.conf を編集。ユーザー pbulk で実行されるらしく /usr/pkgsrc 以下にディレクトリとか作れないので root にする。(どこかに pbulk ユーザーで mount する手段があるのか？)
 
-    limited_list=/usr/pbulk/etc/pbulk.list
+    #unprivileged_user=pbulk
+    unprivileged_user=root
 
 mk.conf.frag を指定し忘れた場合は /usr/pbulk/etc/mk.conf を編集する。
 
 ビルドする
 
-    /usr/pbulk/bin/bulkbuild
+    % /usr/pbulk/bin/bulkbuild
 
 レポートは /mnt/bulklog/meta/report.txt に出来る。
 
 何かエラーがあったら /mnt/bulklog/meta 以下に bulkduild のフェーズごとのログがあるのでエラーを特定して解決して再度ビルドしよう。
+
 
 # パッケージを全部アップグレードする
 
