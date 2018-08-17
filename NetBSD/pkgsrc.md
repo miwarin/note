@@ -406,7 +406,7 @@ pbulk.sh で limited_list を指定し忘れた場合は /usr/pbulk/etc/pbulk.co
 
     limited_list=/usr/pbulk/etc/pbulk.list
 
-limited_list は <カテゴリ>/<パッケージ名> を書く。/usr/pkgsrc からの相対 PATH です。wip も書ける。
+pbulk.list は <カテゴリ>/<パッケージ名> を書く。/usr/pkgsrc からの相対 PATH です。wip も書ける。
 
     devel/git
     lang/ruby
