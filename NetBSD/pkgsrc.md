@@ -294,11 +294,17 @@ tar gz して uuencode し、[send-pr](http://www.netbsd.org/support/send-pr.htm
 
 *  [Chapter 7. Creating binary packages for everything in pkgsrc (bulk builds)](http://www.netbsd.org/docs/pkgsrc/bulk.html)
 
-mk/pbulk/pbulk.sh を使うとよい。 /usr/pbulk/etc/pbulk.list は用途が分からん。
+mk/pbulk/pbulk.sh を使うとよい。
 
     (cd /usr && ftp -o - http://ftp.NetBSD.org/pub/pkgsrc/current/pkgsrc.tar.gz | tar -zxf-)
     cd /usr/pkgsrc/mk/pbulk/
     sh pbulk.sh -n
+
+limited_list は <カテゴリ>/<パッケージ名> を書く。/usr/pkgsrc からの相対 PATH です。wip も書ける。
+
+    devel/git
+    lang/ruby
+    wip/mackerel-agent
 
 pbulk.sh で limited_list を指定し忘れた場合は /usr/pbulk/etc/pbulk.conf を編集する。
 
