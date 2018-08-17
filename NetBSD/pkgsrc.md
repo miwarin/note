@@ -300,10 +300,19 @@ mk/pbulk/pbulk.sh を使うとよい。 /usr/pbulk/etc/pbulk.list は用途が�
     cd /usr/pkgsrc/mk/pbulk/
     sh pbulk.sh -n
 
+pbulk.sh で limited_list を指定し忘れた場合は /usr/pbulk/etc/pbulk.conf を編集する。
+
+    limited_list=/usr/pbulk/etc/pbulk.list
+
+mk.conf.frag を指定し忘れた場合は /usr/pbulk/etc/mk.conf を編集する。
+
 ビルドする
 
     /usr/pbulk/bin/bulkbuild
 
+レポートは /mnt/bulklog/meta/report.txt に出来る。
+
+何かエラーがあったら /mnt/bulklog/meta 以下に bulkduild のフェーズごとのログがあるのでエラーを特定して解決して再度ビルドしよう。
 
 # パッケージを全部アップグレードする
 
