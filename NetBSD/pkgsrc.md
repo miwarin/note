@@ -385,7 +385,8 @@ mount はこんな感じ。
 
 シェルは補完が効かないので on にする。
 
-    % set -o tabcomplete emacs
+    % set -o tabcomplete
+    % set -o emacs
 
 mk.conf.frag を作る。
 
