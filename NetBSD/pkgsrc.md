@@ -420,6 +420,15 @@ pbulk.conf を編集。ユーザー pbulk で実行されるらしく /usr/pkgsr
 
 mk.conf.frag を指定し忘れた場合は /usr/pbulk/etc/mk.conf を編集する。
 
+プロキシがある場合は環境変数を設定しておくこと。パッケージが fetch できないぞ。
+
+    % env | grep proxy
+    ftp_proxy=http://example.jp:8080
+    no_proxy=localhost,127.0.0.1,10.1.5.0/24,192.168.100.0/24
+    https_proxy=http://example.jp:8080
+    rsync_proxy=http://example.jp:8080
+    http_proxy=http://example.jp:8080
+
 ビルドする
 
     % /usr/pbulk/bin/bulkbuild
