@@ -504,14 +504,14 @@ wip をビルドするときに union mount しておくと便利。
 
 /etc/mk.conf はだいたいこんな
 
-    ACCEPTABLE_LICENSES=postfix-license
-    ACCEPTABLE_LICENSES=vim-license
+    ACCEPTABLE_LICENSES+=postfix-license
+    ACCEPTABLE_LICENSES+=vim-license
+    ACCEPTABLE_LICENSES+=gnu-agpl-v3
     X11_TYPE=modular           # システムのX11(/usr/X11R6, /usr/openwin, ...)を使わない場合。/usr/pkgsrc/x11/modular-xorg-server が使われるようになる。らしい
     PKG_OPTIONS.ImageMagick=-x11 -jasper
     PKG_OPTIONS.scmgit=-scmgit-gui
     ALLOW_VULNERABLE_PACKAGES=1
     PKG_OPTIONS.emacs=-dbus -gtk -svg -x11 -xft2 -xaw -motif -nextstep
-    ACCEPTABLE_LICENSES+= gnu-agpl-v3
 
 
 # SSL ルート証明書をインストールする
