@@ -296,6 +296,8 @@ https://wiki.netbsd.org/tutorials/pkgsrc/pbulk/
 
 chroot 環境を作る。chroot 環境で作業しないと /var/pkg/db 等がぶっ壊されて分けわからなくなる。
 
+NetBSD のソースファイルが /usr/src にあることが前提のようなので適当に取得しておくこと https://www.netbsd.org/mirrors/#ftp
+
 mksandbox で作る。インストールする。
 
     % cd /usr/pkgsrc/pkgtools/mksandbox/
