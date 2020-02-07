@@ -502,6 +502,13 @@ wip をビルドするときに union mount しておくと便利。
     % git commit
     % git push
 
+clone したユーザーを開発者ユーザーに変更したい場合。 wip/.git/config を変更する
+
+```
+[remote "origin"]
+        url = miwarin@wip.pkgsrc.org:/pkgsrc-wip.git
+```
+
 # よく使うオプション
 
 /etc/mk.conf はだいたいこんな
