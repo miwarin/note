@@ -37,27 +37,6 @@ csh系
     cd /usr/pkgsrc
     cvs update -dP
 
-## different version xxxx already installed
-
-なにかのパッケージを make install している途中で
-
-    different version xxxx already installed
-
-などと言われたら
-
-    % cd /usr/pkgsrc/pkgtools/pkg_tarup/
-    % make install clean clean-depends
-
-その後 怒られたパッケージのディレクトリへ移動し
-
-    % make replace
-
-その後 元々インストールしようとしていたパッケージへ戻り make install
-
-[obache](https://twitter.com/obache/statuses/235726030663458816)
-
-> @miwarin pkg_admin rebuild=YES pkg1 pkg2... したのち、pkgtools/pkg_rolling-replace 入れて、pkg_rolling-replace すれば放置可能。
-
 # バイナリパッケージをインストールする
 
 [Chapter&#160;4.&#160;Using pkgsrc - 4.1.2. Installing binary packages](http://www.netbsd.org/docs/pkgsrc/using.html#installing-binary-packages)
@@ -550,3 +529,46 @@ clone したユーザーを開発者ユーザーに変更したい場合。 wip/
     [http]
     sslCAinfo = /etc/ssl/certs/ca-certificates.crt
 
+# different version xxxx already installed
+
+なにかのパッケージを make install している途中で
+
+    different version xxxx already installed
+
+などと言われたら
+
+    % cd /usr/pkgsrc/pkgtools/pkg_tarup/
+    % make install clean clean-depends
+
+その後 怒られたパッケージのディレクトリへ移動し
+
+    % make replace
+
+その後 元々インストールしようとしていたパッケージへ戻り make install
+
+[obache](https://twitter.com/obache/statuses/235726030663458816)
+
+> @miwarin pkg_admin rebuild=YES pkg1 pkg2... したのち、pkgtools/pkg_rolling-replace 入れて、pkg_rolling-replace すれば放置可能。
+
+# pkg_rolling-replace -rsuv でエラーになる場合
+
+```
+===> Updating using binary package of vim-share-8.2.1709
+/usr/bin/env  /usr/sbin/pkg_add -K /var/db/pkg -U -D /usr/pkgsrc/editors/vim-share/work/.packages/vim-share-8.2.1709.tgz
+pkg_add: Can't open +CONTENTS of depending package vim-8.0.1379
+pkg_add: 1 package addition failed
+*** Error code 1
+```
+
+/usr/pkgsrc で pkg_admin rebuild すればいいはず。
+
+```
+% pkg_admin rebuild=YES vim-share-8.2.1709
+```
+
+pkg_admin rebuild-tree したりする。
+
+
+```
+% pkg_admin rebuild-tree
+```
