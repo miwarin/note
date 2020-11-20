@@ -34,8 +34,8 @@
     [homes]
             comment = Home Directories
             valid users = %S
-            read only = No
-            browseable = No
+            read only = no
+            browseable = no
 
 
 ユーザー追加。sambaをインストールしたホスト(NetBSD)にユーザー rin が居て且つ /home/rin にはユーザー rin としてアクセスしたい場合。
